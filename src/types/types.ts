@@ -27,7 +27,7 @@ export type Category = {
 export type Closet = {
   id: string
   name: string
-  userId: string
+  user: User
   created_at: string
   product: Array<Product>
   category: Array<Category>
@@ -43,5 +43,5 @@ export type User = {
 }
 
 export type API  = {
-  retrieveAllCloset: Closet
+  retrieveClosetById: Closet
 }

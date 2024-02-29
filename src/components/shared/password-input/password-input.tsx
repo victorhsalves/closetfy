@@ -25,19 +25,21 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
   ) => {
 
     return (
-      <div className="relative flex flex-col gap-2">
-        {label && <label className="font-medium text-gray-700">{label}</label>}
-        <input
-          ref={ref}
-          type={"password"}
-          className={clsx(
-            "rounded-[8px] border-[1px] border-gray-300 shadow-sm focus:outline-none",
-            sizes[size],
-            className
-          )}
-          {...props}
-        />
-      </div>
+      <React.Fragment>
+        <div className="flex flex-col gap-2">
+          {label && <label className="font-medium text-gray-700">{label}</label>}
+          <input
+            ref={ref}
+            type={"password"}
+            className={clsx(
+              "rounded-[8px] border-[1px] border-gray-300 shadow-sm focus:outline-none",
+              sizes[size],
+              className
+            )}
+            {...props}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 );

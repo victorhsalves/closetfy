@@ -8,22 +8,20 @@ const sizes = {
 };
 
 export type TextInputProps = {
-  className?: string
-  placeholder?: string
+  className?: string;
+  placeholder?: string;
   size?: keyof typeof sizes;
   label?: string;
 };
 
-export default function TextInput(
-  {
-    className = "",
-    size = "md" as keyof typeof sizes,
-    label,
-    ...props
-  }: TextInputProps
-) {
+export default function TextInput({
+  className = "",
+  size = "md" as keyof typeof sizes,
+  label,
+  ...props
+}: TextInputProps) {
   return (
-    <span className="relative flex flex-col gap-2">
+    <React.Fragment>
       {label && <label className="font-medium text-gray-700">{label}</label>}
       <input
         className={clsx(
@@ -33,6 +31,6 @@ export default function TextInput(
         )}
         {...props}
       />
-    </span>
+    </React.Fragment>
   );
 }

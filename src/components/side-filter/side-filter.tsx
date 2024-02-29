@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { Category, User } from "@/types";
 import { FaUser } from "react-icons/fa";
 
-export default function SideFilter({ categories, user }: { categories: Array<Category>, user: User}) {
+export default function SideFilter({ categories, user }: { categories?: Array<Category>, user?: User}) {
   const [toggle, setToggle] = useState<boolean>(false);
   const handleToggle = () => setToggle(prev => !prev)
   return (
@@ -18,13 +18,13 @@ export default function SideFilter({ categories, user }: { categories: Array<Cat
             <FaUser size={120} className="text-gray-500" />
           </div>
           <span>
-            {user.name}
+            {user?.name}
           </span>
         </div>
         <div>
           <ul>
-            {categories.map((category, index) => (
-              <li key={index} className="flex items-center justify-between p-2 text-sm hover:bg-gray-100">
+            {categories?.map((category, index) => (
+              <li key={index} className="flex items-center justify-between p-2 text-sm hover:bg-gray-100 cursor-pointer">
                 {category.nameOfCategory} <FiChevronDown />
               </li>
             ))}
