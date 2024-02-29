@@ -25,6 +25,7 @@ query RetrieveClosetById {
         user {
             id
             name
+            image
         }
     }
 }`

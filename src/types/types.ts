@@ -40,6 +40,7 @@ export type User = {
   password: string
   cpfNumber: string
   created_at: string
+  image: string
 }
 
 export type API  = {

@@ -6,8 +6,9 @@ import { BiMenu, BiX } from "react-icons/bi";
 import clsx from "clsx";
 import { Category, User } from "@/types";
 import { FaUser } from "react-icons/fa";
+import Image from "next/image";
 
-export default function SideFilter({ categories, user }: { categories?: Array<Category>, user?: User}) {
+export default function SideFilter({ categories, user }: { categories?: Array<Category>, user?: User }) {
   const [toggle, setToggle] = useState<boolean>(false);
   const handleToggle = () => setToggle(prev => !prev)
   return (
@@ -15,7 +16,15 @@ export default function SideFilter({ categories, user }: { categories?: Array<Ca
       <div className="hidden lg:block min-w-60 w-1/3 flex flex-col p-5 gap-5 rounded-lg border-[1px]">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-center h-40 w-40 bg-gray-200 rounded-lg">
-            <FaUser size={120} className="text-gray-500" />
+            <div className="relative w-full h-full bg-gray-200 rounded-xl wrap-hidden">
+              <Image
+                src={`data:image/png;base64,${user?.image}`}
+                alt=""
+                // width={214}
+                // height={230}
+                layout="fill"
+              />
+            </div>
           </div>
           <span>
             {user?.name}
@@ -49,18 +58,27 @@ export default function SideFilter({ categories, user }: { categories?: Array<Ca
         <div className="w-full flex flex-col p-5 gap-5">
           <div className="flex flex-col gap-2">
             <div className="h-52 bg-gray-300 w-52 rounded-lg p-5">
-              Foto Renata
+              <div className="relative w-full h-full bg-gray-200 rounded-xl wrap-hidden">
+                <Image
+                  src={`data:image/png;base64,${user?.image}`}
+                  alt=""
+                  // width={214}
+                  // height={230}
+                  layout="fill"
+                />
+              </div>
             </div>
             <span>
-              Renata Silva Alves
+              {user?.name}
             </span>
           </div>
           <div className="flex flex-col gap-2">
             <ul className="gap-2">
-              <li className="flex items-center justify-between p-2 text-sm hover:bg-gray-100">Casual <FiChevronDown /></li>
-              <li className="flex items-center justify-between p-2 text-sm hover:bg-gray-100">Formal <FiChevronDown /></li>
-              <li className="flex items-center justify-between p-2 text-sm hover:bg-gray-100">Party <FiChevronDown /></li>
-              <li className="flex items-center justify-between p-2 text-sm hover:bg-gray-100">Gym <FiChevronDown /></li>
+              {categories?.map((category, index) => (
+                <li key={index} className="flex items-center justify-between p-2 text-sm hover:bg-gray-100 cursor-pointer">
+                  {category.nameOfCategory} <FiChevronDown />
+                </li>
+              ))}
             </ul>
           </div>
           <Button className="w-full" onClick={handleToggle}>

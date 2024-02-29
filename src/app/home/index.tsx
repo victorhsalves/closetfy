@@ -6,15 +6,6 @@ import { useCloset } from "@/hooks/useCloset";
 import { API, User } from "@/types";
 import { useEffect } from "react";
 
-const user: User = {
-  id: "b218489e-f25f-41f5-b022-a33f9a369763",
-  name: "Jhon",
-  email: "asd@ads.com",
-  cpfNumber: "12312312",
-  created_at: '',
-  password: ''
-}
-
 export default function Home() {
 
   const { data, error, loading, handleSearchChange, search } = useCloset();
